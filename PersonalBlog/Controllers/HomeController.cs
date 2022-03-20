@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using PersonalBlog.Application.Dto;
 using PersonalBlog.Application.Interfaces;
 using PersonalBlog.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace PersonalBlog.Controllers
@@ -44,7 +45,7 @@ namespace PersonalBlog.Controllers
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<BlogPostDto, BlogPostViewModel>());
             var map = new Mapper(config);
-            var blogPostView = map.Map<BlogPostViewModel>(_blogPostService.GetLatestPosts());          
+            var blogPostView = map.Map<List<BlogPostViewModel>>(_blogPostService.GetLatestPosts());          
             return Json(blogPostView);
         }
 
@@ -52,7 +53,7 @@ namespace PersonalBlog.Controllers
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<BlogPostDto, BlogPostViewModel>());
             var map = new Mapper(config);
-            var blogPostView = map.Map<BlogPostViewModel>(_blogPostService.GetOlderPosts(oldestBlogPostId));           
+            var blogPostView = map.Map<List<BlogPostViewModel>>(_blogPostService.GetOlderPosts(oldestBlogPostId));           
             return Json(blogPostView);
         }
 

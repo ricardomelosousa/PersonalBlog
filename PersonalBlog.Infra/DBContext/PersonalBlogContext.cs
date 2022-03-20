@@ -10,7 +10,7 @@ namespace PersonalBlog.Infra.DBContext
         {
         }
 
-        public DbSet<BlogPost> BlogPosts { get; set; }
+        public DbSet<BlogPost> BlogPost { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

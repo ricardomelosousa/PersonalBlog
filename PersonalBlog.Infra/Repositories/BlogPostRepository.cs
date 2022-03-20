@@ -13,14 +13,14 @@ namespace PersonalBlog.Infra.Repositories
         }
         public List<BlogPost> GetLatestPosts()
         {
-            return _personalBlogContext.BlogPosts.ToList();
+            return _personalBlogContext.BlogPost.ToList();
         }
 
         public List<BlogPost> GetOlderPosts(int id)
         {
-            return _personalBlogContext.BlogPosts.Where(s => s.PostId == id).ToList();
+            return _personalBlogContext.BlogPost.Where(s => s.PostId == id).ToList();
         }
 
-        public BlogPost GetPostText(string link) => _personalBlogContext.BlogPosts.FirstOrDefault(s => s.ShortDescription == link);
+        public BlogPost GetPostText(string link) => _personalBlogContext.BlogPost.FirstOrDefault(s => s.ShortDescription == link);
     }
 }
